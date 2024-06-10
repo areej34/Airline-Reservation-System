@@ -2,59 +2,49 @@
 end semester project for OOP
 
 # Detailed Code Logic and Approaches
-This code models a simple flight booking system with key functionalities for managing flights, airlines, airplanes, passengers, and user interactions. Here's a detailed breakdown of the logic and approaches used:
+This code models a simple flight booking system with key functionalities for managing flights, airports, passengers, and user interactions. Here's a detailed breakdown of the logic and approaches used:
 
 # 1. Class Hierarchy and Relationships
 Class Hierarchy:
-
-# Airport (Parent Class)
-OriginAirport (Child Class)
-IntermediateAirport (Child Class)
-DestinationAirport (Child Class)
-# User (Abstract Parent Class)
+User (Abstract Parent Class)
 Admin (Child Class)
-PassengerUser (Child Class)
+Passenger (Child Class)
+Airport (Class)
+Flight (Class)
+Seat (Class)
+Ticket (Class)
+
 Relationships:
 
-A Flight has an origin, destination, possibly intermediate airports, and an associated airline.
-An Airline can have multiple flights and airplanes.
-A Passenger is associated with a seat on a flight.
-User can be an Admin or a PassengerUser, with different capabilities.
+A Flight has an origin and destination airport and a list of seats.
+A Passenger can book a Flight and is associated with a Seat on that flight.
+User can be either an Admin or a Passenger, with different capabilities.
 
 # 2. Class Definitions and Responsibilities
 Airport Class:
-Defines common properties and methods for airports, such as name, city, and state. Subclasses add specific properties like departure and arrival times.
-
-OriginAirport, IntermediateAirport, DestinationAirport:
-These subclasses of Airport define specific types of airports involved in a flight's journey, with relevant additional properties.
+Defines properties for airports such as name, city, and state.
 
 Flight Class:
-Manages flight details including flight number, origin, destination, intermediate airports, airline, seats, and passengers. It includes methods to find available seats and manage passenger lists.
-
-Airline Class:
-Represents an airline, containing a list of flights and airplanes. Methods allow adding and removing flights.
-
-Airplane Class:
-Defines an airplane with a model, total seats, and maximum capacity. Methods provide details about the airplane.
+Manages flight details including flight number, origin, destination, seats, and passengers. It includes methods to find available seats and manage passenger lists.
 
 Seat Class:
 Represents a seat on a flight, with methods to reserve and free seats.
 
-Passenger Class:
-Represents a passenger with a name, age, passport number, and associated seat. Methods print passenger details.
+Ticket Class:
+Represents a booked ticket, linking a passenger to a specific flight and seat.
 
 User Class:
-Abstract class for user roles, with subclasses Admin and PassengerUser implementing specific functionalities.
+Abstract class for user roles, with subclasses Admin and Passenger implementing specific functionalities.
 
 Admin Class:
-Allows managing flights and airlines. Includes methods for adding/removing flights and airlines. Implements an performActions method for admin-specific actions.
+Allows managing flights. Includes methods for adding, editing, viewing, and deleting flights.
 
-PassengerUser Class:
-Allows booking and canceling flight bookings. Includes methods for booking flights, canceling bookings, and viewing booked flights. Implements an performActions method for passenger-specific actions.
+Passenger Class:
+Allows booking and canceling flight bookings. Includes methods for booking flights, canceling bookings, and viewing booked flights.
 
 # 3. User Interaction Logic
 Admin Actions:
-Admins can add and remove flights and airlines through a command-line interface (CLI). They interact with the system to manage flight and airline data.
+Admins can add, edit, view, and delete flights through a graphical user interface (GUI). They interact with the system to manage flight data.
 
 Passenger Actions:
-Passengers can book flights, cancel bookings, and view their booked flights through a CLI. The system checks for available seats and manages passenger reservations.
+Passengers can sign up, log in, search for flights, book flights, cancel bookings, and view booked flights and tickets through a GUI. The system checks for available seats and manages passenger reservations.
